@@ -86,19 +86,20 @@ CREATE TABLE IF NOT EXISTS solicitudes_adopcion (
 
 -- 5. Tabla de Productos (Tienda / Carrito)
 CREATE TABLE IF NOT EXISTS productos (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(150) NOT NULL,
-    descripcion TEXT,
-    precio DECIMAL(10, 2) NOT NULL,
-    stock INT DEFAULT 0,
-    categoria VARCHAR(100), -- Ej: 'Alimento', 'Juguetes', 'Accesorios'
-    imagen_url VARCHAR(255),
-    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (refugio_id) REFERENCES refugios (id) ON DELETE SET NULL
-);
+      id BIGINT AUTO_INCREMENT PRIMARY KEY,
+      usuario_id BIGINT NULL, -- Administrador que registró el producto
+      nombre VARCHAR(150) NOT NULL,
+      descripcion TEXT,
+      precio DECIMAL(10, 2) NOT NULL,
+      stock INT DEFAULT 0,
+      categoria VARCHAR(100), -- Ej: 'Alimento', 'Juguetes', 'Accesorios'
+      imagen_url VARCHAR(255),
+      creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      FOREIGN KEY (usuario_id) REFERENCES usuarios (id) ON DELETE SET NULL
+    );
 
--- 6. Tabla de Pedidos (Compras de la tienda)
+  -- 6. Tabla de Pedidos (Compras de la tienda)
 CREATE TABLE IF NOT EXISTS pedidos (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     usuario_id BIGINT NOT NULL,
