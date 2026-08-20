@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/api/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/api/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/dto/UsuarioLoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/dto/UsuarioLoginDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/UsuarioServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/UsuarioServices.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/api">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="api" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ericperucho12-netizen&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ericperucho12-netizen/Marcando-Huellitas-Backend.git&quot;,
+    &quot;accountId&quot;: &quot;3a5778d3-705a-495e-ab45-3bc320c97e51&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="3I7L13u5LrIQEHZbOBzsLYBc8Na" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build api.executor": "Run",
+    "Gradle.UsuarioControllerTest.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.ApiApplication.executor": "Run",
+    "git-widget-placeholder": "eric",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/EricPS/Desktop/MarcandoHuellitas_Backend"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="" />
+      <created>1787110443556</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1787110443556</updated>
+    </task>
+    <servers />
+  </component>
+</project>
