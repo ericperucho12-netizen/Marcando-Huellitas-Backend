@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/api/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/api/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/dto/UsuarioLoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/dto/UsuarioLoginDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/UsuarioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/UsuarioServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/UsuarioServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +42,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="developer" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -70,19 +69,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build api.executor": "Run",
-    "Gradle.UsuarioControllerTest.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.ApiApplication.executor": "Run",
-    "git-widget-placeholder": "eric",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/EricPS/Desktop/MarcandoHuellitas_Backend"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build api.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.UsuarioControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ApiApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;eric&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/EricPS/Desktop/MarcandoHuellitas_Backend&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
