@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 /**
  * Modelo Entidad para Producto.
@@ -28,7 +29,7 @@ public class Producto {
 
     private String descripcion;
 
-    private Double precio;
+    private BigDecimal precio;
 
     private Integer stock;
 
@@ -44,3 +45,4 @@ public class Producto {
     private LocalDateTime actualizadoEn;
 
 }
+

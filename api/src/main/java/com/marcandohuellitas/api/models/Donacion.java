@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 /**
  * Modelo Entidad para Donacion.
@@ -33,7 +34,7 @@ public class Donacion {
     @Column(name = "telefono_donante")
     private String telefonoDonante;
 
-    private Double monto;
+    private BigDecimal monto;
 
     private String frecuencia;
 
@@ -49,3 +50,4 @@ public class Donacion {
     private LocalDateTime creadoEn;
 
 }
+

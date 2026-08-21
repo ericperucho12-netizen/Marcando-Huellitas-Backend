@@ -40,4 +40,5 @@ public class MascotaController {
         service.eliminar(id);
         return ResponseEntity.ok().build();
     }
+
 }

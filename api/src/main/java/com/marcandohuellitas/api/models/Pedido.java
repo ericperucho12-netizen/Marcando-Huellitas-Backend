@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 /**
  * Modelo Entidad para Pedido.
@@ -25,7 +26,7 @@ public class Pedido {
     private Long usuarioId;
 
     @Column(name = "monto_total")
-    private Double montoTotal;
+    private BigDecimal montoTotal;
 
     private String estado;
 
@@ -36,3 +37,4 @@ public class Pedido {
     private LocalDateTime creadoEn;
 
 }
+

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 /**
  * Modelo Entidad para Refugio.
@@ -61,3 +62,4 @@ public class Refugio {
     private LocalDateTime creadoEn;
 
 }
+

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 /**
  * Modelo Entidad para SolicitudAdopcion.
@@ -39,3 +40,4 @@ public class SolicitudAdopcion {
     private LocalDateTime creadoEn;
 
 }
+

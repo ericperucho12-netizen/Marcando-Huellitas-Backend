@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 /**
  * Modelo Entidad para DetallePedido.
@@ -30,6 +31,7 @@ public class DetallePedido {
     private Integer cantidad;
 
     @Column(name = "precio_compra")
-    private Double precioCompra;
+    private BigDecimal precioCompra;
 
 }
+

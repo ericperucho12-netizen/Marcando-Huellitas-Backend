@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 /**
  * Modelo Entidad para MascotasFavorita.
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class MascotasFavorita {
 
+    @Id
     @Column(name = "usuario_id")
     private Long usuarioId;
 
@@ -27,3 +29,5 @@ public class MascotasFavorita {
     private LocalDateTime creadoEn;
 
 }
+
+

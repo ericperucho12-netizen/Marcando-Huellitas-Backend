@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 /**
  * Modelo Entidad para MetodosPagoUsuario.
@@ -34,6 +35,8 @@ public class MetodosPagoUsuario {
     private String expiracion;
 
     @Column(name = "es_principal")
-    private String esPrincipal;
+    private Boolean esPrincipal;
 
 }
+
+
