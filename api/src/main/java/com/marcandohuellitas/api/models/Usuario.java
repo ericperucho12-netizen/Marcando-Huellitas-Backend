@@ -50,5 +50,4 @@ public class Usuario {
     @Column(name = "actualizado_en", insertable = false, updatable = false)
     private  LocalDateTime actualizadoEn;
 
-
 }
