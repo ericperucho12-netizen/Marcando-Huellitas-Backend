@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/api.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/api.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/api.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/api.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/dto/UsuarioLoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/dto/UsuarioLoginDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +78,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.ApiApplication.executor": "Run",
-    "git-widget-placeholder": "Evelin",
+    "git-widget-placeholder": "adriana-backend",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/evely/OneDrive/Escritorio/COHORTE69/Marcando-Huellitas-Backend"
