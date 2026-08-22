@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Mascota.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/marcandohuellitas/api/controllers/MascotaControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/marcandohuellitas/api/services/MascotaServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/api.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/api.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/api.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/api.test.iml" afterDir="false" />
+    <list default="true" id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="&quot;cambios en DTOlogin y controller&quot;">
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/DonacionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Donacion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/DonacionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/DonacionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/marcandohuellitas/api/services/DonacionServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/api/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/MascotaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/MascotaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Mascotas.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/MascotaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/MascotaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/MascotaServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/MascotaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +42,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -78,19 +73,38 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build api.executor": "Run",
-    "Gradle.MascotaControllerTest.executor": "Run",
-    "Gradle.MascotaServiceTest.executor": "Run",
     "Gradle.UsuarioControllerTest.executor": "Run",
+    "Gradle.api [:com.marcandohuellitas.api.ApiApplication.main()].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.ApiApplication.executor": "Run",
-    "git-widget-placeholder": "Milett",
+    "git-widget-placeholder": "adriana-backend",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/evely/OneDrive/Escritorio/COHORTE69/Marcando-Huellitas-Backend"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="ApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.marcandohuellitas.api.ApiApplication" />
+      <module name="api.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.marcandohuellitas.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ApiApplication" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="" />
@@ -99,6 +113,19 @@
       <option name="presentableId" value="Default" />
       <updated>1787110443556</updated>
     </task>
+    <task id="LOCAL-00001" summary="&quot;cambios en DTOlogin y controller&quot;">
+      <option name="closed" value="true" />
+      <created>1787334813540</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1787334813540</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;cambios en DTOlogin y controller&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;cambios en DTOlogin y controller&quot;" />
   </component>
 </project>
