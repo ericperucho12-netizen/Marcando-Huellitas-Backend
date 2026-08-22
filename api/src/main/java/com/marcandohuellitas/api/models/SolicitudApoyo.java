@@ -9,22 +9,20 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "producto")
+@Table(name = "solicitudes_apoyo")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Producto {
+public class SolicitudApoyo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "usuario_id")
     private Long id;
-    private String nombre;
-    private String descripcion;
-    private BigDecimal precio;
-    private int stock;
-    private String categoria;
-    @Column(name = "imagen_url")
-    private String imagenUrl;
+    @Column(name = "usuario_id")
+    private BigDecimal usuarioId;
+    @Column(name = "tipo_apoyo")
+    private String tipoApoyo;
+    private String mensaje;
+    private String estado;
     @Column(name = "creado_en", insertable = false, updatable = false)
     private LocalDateTime creadoEn;
     @Column(name = "actualizado_en", insertable = false, updatable = false)
