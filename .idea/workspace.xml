@@ -5,17 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Mascota.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/marcandohuellitas/api/controllers/MascotaControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/marcandohuellitas/api/services/MascotaServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/api.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/api.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/api.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/api.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/PedidoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/SolicitudApoyoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Pedido.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/SolicitudApoyo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/PedidoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/SolicitudApoyoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/PedidoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/SolicitudApoyoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/marcandohuellitas/api/controllers/PedidoControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/marcandohuellitas/api/controllers/SolicitudApoyoControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/marcandohuellitas/api/services/PedidoServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/marcandohuellitas/api/services/SolicitudApoyoServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/api/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/MascotaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/MascotaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Mascotas.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/MascotaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/MascotaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/MascotaServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/MascotaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Producto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,12 +34,26 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/api">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="api" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="api" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="api" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -48,6 +65,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -64,7 +82,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/ericperucho12-netizen/Marcando-Huellitas-Backend.git&quot;,
-    &quot;accountId&quot;: &quot;3a5778d3-705a-495e-ab45-3bc320c97e51&quot;
+    &quot;accountId&quot;: &quot;17a69ab4-cbe0-459e-bbce-10a27fc028ed&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -78,19 +96,49 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build api.executor": "Run",
-    "Gradle.MascotaControllerTest.executor": "Run",
-    "Gradle.MascotaServiceTest.executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
     "Gradle.UsuarioControllerTest.executor": "Run",
+    "Gradle.api [buildDependents].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.ApiApplication.executor": "Run",
-    "git-widget-placeholder": "Milett",
+    "git-widget-placeholder": "Evelin",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/evely/OneDrive/Escritorio/COHORTE69/Marcando-Huellitas-Backend"
+    "last_opened_file_path": "C:/Users/evely/OneDrive/Escritorio/COHORTE69/Marcando-Huellitas-Backend",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="api [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/api" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.api [buildDependents]" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="" />
