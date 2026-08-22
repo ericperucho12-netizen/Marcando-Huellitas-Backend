@@ -9,51 +9,95 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * Controlador REST de Usuarios.
- * Esta clase es la encargada de recibir las peticiones HTTP de tu Frontend (Ej: los Fetch con JSON en Javascript).
- * No contiene lógica pesada, solo actúa como puente entre el Frontend y los Servicios.
+ * Esta clase es la encargada de recibir las peticiones HTTP del Frontend.
+ * No contiene logica pesada, solo actua como puente entre el Frontend y los Servicios.
  */
-@RestController // Indica que esta clase responderá con datos (generalmente en formato JSON)
-@RequestMapping("/api/auth") // Todas las URLs de este archivo empezarán con http://localhost:8080/api/auth
+@RestController
+@RequestMapping("/api/auth")
 public class UsuarioController {
 
     @Autowired
-    private UsuarioServices usuarioServices; // Conectamos el Controlador con los Servicios
+    private UsuarioServices usuarioServices;
 
     /**
      * Endpoint para Registrar un Usuario.
      * URL: POST http://localhost:8080/api/auth/registro
-     * @RequestBody Usuario usuario: Toma el JSON que manda el frontend y lo convierte en un objeto Usuario de Java.
      */
     @PostMapping("/registro")
     public ResponseEntity<?> registrarUsuario(@RequestBody Usuario usuario) {
         try {
-            // Se lo mandamos al Servicio para que lo encripté y lo guarde
             Usuario nuevoUsuario = usuarioServices.registrarUsuario(usuario);
-            // Si todo sale bien, respondemos con Código 200 (OK) y los datos del nuevo usuario
             return ResponseEntity.ok(nuevoUsuario);
         } catch (Exception e) {
-            // Si hay un error (ej. el correo ya existe), devolvemos Código 400 (Bad Request)
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
     /**
-     * Endpoint para Iniciar Sesión.
+     * Endpoint para Iniciar Sesion (email/password).
      * URL: POST http://localhost:8080/api/auth/login
-     * @RequestBody UsuarioLoginDTO loginDTO: Toma el correo y contraseña del JSON del frontend.
      */
     @PostMapping("/login")
     public ResponseEntity<?> loginUsuario(@RequestBody UsuarioLoginDTO loginDTO) {
-        // Le preguntamos al Servicio si las credenciales son correctas y si no está bloqueado
-        String resultado = usuarioServices.loginUsuario(loginDTO.getCorreo(), loginDTO.getPassword());
-        
-        // Dependiendo de lo que nos responda el servicio, devolvemos un código HTTP diferente
-        if (resultado.equals("Login exitoso")) {
-            return ResponseEntity.ok(resultado); // 200 OK
-        } else if (resultado.contains("bloqueada")) {
-            return ResponseEntity.status(403).body(resultado); // 403 Forbidden (Prohibido el paso, cuenta bloqueada)
-        } else {
-            return ResponseEntity.status(401).body(resultado); // 401 Unauthorized (Credenciales malas)
+        try {
+            Usuario usuario = usuarioServices.loginUsuario(loginDTO.getCorreo(), loginDTO.getPassword());
+            return ResponseEntity.ok(usuario);
+        } catch (RuntimeException e) {
+            String errorMsg = e.getMessage();
+            if (errorMsg.contains("bloqueada")) {
+                return ResponseEntity.status(403).body(errorMsg);
+            }
+            return ResponseEntity.status(401).body(errorMsg);
+        }
+    }
+
+    /**
+     * Endpoint para Iniciar Sesion con Google.
+     * URL: POST http://localhost:8080/api/auth/google
+     */
+    @PostMapping("/google")
+    public ResponseEntity<?> loginGoogle(@RequestBody java.util.Map<String, String> body) {
+        try {
+            String token = body.get("token");
+            Usuario usuario = usuarioServices.loginConGoogle(token);
+            return ResponseEntity.ok(usuario);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(401).body(e.getMessage());
+        }
+    }
+
+    /**
+     * Endpoint para solicitar recuperacion de contrasena.
+     * URL: POST http://localhost:8080/api/auth/recuperar
+     * Body: { "correo": "usuario@email.com" }
+     */
+    @PostMapping("/recuperar")
+    public ResponseEntity<?> solicitarRecuperacion(@RequestBody java.util.Map<String, String> body) {
+        try {
+            String correo = body.get("correo");
+            usuarioServices.solicitarRecuperacion(correo);
+            return ResponseEntity.ok("Correo de recuperacion enviado correctamente");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(404).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error al enviar el correo: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Endpoint para restablecer la contrasena con el token recibido por correo.
+     * URL: POST http://localhost:8080/api/auth/reset-password
+     * Body: { "token": "uuid-token", "nuevaPassword": "NuevaPass123" }
+     */
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody java.util.Map<String, String> body) {
+        try {
+            String token = body.get("token");
+            String nuevaPassword = body.get("nuevaPassword");
+            usuarioServices.resetPassword(token, nuevaPassword);
+            return ResponseEntity.ok("Contrasena actualizada correctamente");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(400).body(e.getMessage());
         }
     }
 }

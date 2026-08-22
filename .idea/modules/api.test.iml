@@ -3,9 +3,6 @@
   <component name="NewModuleRootManager">
     <output-test url="file://$MODULE_DIR$/../../api/build/classes/java/test" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../api/build/generated/sources/annotationProcessor/java/test">
-      <sourceFolder url="file://$MODULE_DIR$/../../api/build/generated/sources/annotationProcessor/java/test" isTestSource="true" generated="true" />
-    </content>
     <content url="file://$MODULE_DIR$/../../api/src/test">
       <sourceFolder url="file://$MODULE_DIR$/../../api/src/test/java" isTestSource="true" />
     </content>
@@ -16,6 +13,7 @@
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-validation:4.1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:4.1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-security:4.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-mail:4.1.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Gradle: org.projectlombok:lombok:1.18.46" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-test:4.1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-jdbc:4.1.0" level="project" />
@@ -29,6 +27,7 @@
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-webmvc:4.1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-security:4.1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-aop:7.0.8" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-mail:4.1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-test-autoconfigure:4.1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-test:4.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.jayway.jsonpath:json-path:2.10.0" level="project" />
@@ -68,6 +67,8 @@
     <orderEntry type="library" name="Gradle: org.springframework.security:spring-security-config:7.1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.security:spring-security-web:7.1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-beans:7.0.8" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-context-support:7.0.8" level="project" />
+    <orderEntry type="library" name="Gradle: jakarta.mail:jakarta.mail-api:2.1.5" level="project" />
     <orderEntry type="library" name="Gradle: jakarta.activation:jakarta.activation-api:2.1.4" level="project" />
     <orderEntry type="library" name="Gradle: net.minidev:accessors-smart:2.6.0" level="project" />
     <orderEntry type="library" name="Gradle: net.bytebuddy:byte-buddy:1.18.10" level="project" />
@@ -121,13 +122,14 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.mysql:mysql-connector-j:9.7.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.junit.platform:junit-platform-launcher:6.0.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.junit.platform:junit-platform-engine:6.0.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.eclipse.angus:angus-mail:2.0.5" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.junit.jupiter:junit-jupiter-engine:6.0.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.objenesis:objenesis:3.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.eclipse.angus:angus-activation:2.0.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.glassfish.jaxb:jaxb-runtime:4.0.9" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.hibernate.models:hibernate-models:1.1.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: jakarta.inject:jakarta.inject-api:2.0.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.glassfish.jaxb:jaxb-core:4.0.9" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: org.eclipse.angus:angus-activation:2.0.3" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.glassfish.jaxb:txw2:4.0.9" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.sun.istack:istack-commons-runtime:4.1.2" level="project" />
   </component>

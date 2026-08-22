@@ -1,4 +1,4 @@
-package com.marcandohuellitas.api.controllers;
+﻿package com.marcandohuellitas.api.controllers;
 
 import com.marcandohuellitas.api.dto.UsuarioLoginDTO;
 import com.marcandohuellitas.api.services.UsuarioServices;
@@ -28,20 +28,22 @@ public class UsuarioControllerTest {
     private UsuarioController usuarioController;
 
     @Test
-    void login_DebeRetornar200_CuandoEsExitoso() {
-        // GIVEN
+    void login_DebeRetornar200_CuandoEsExitoso() {        // GIVEN
         UsuarioLoginDTO loginDTO = new UsuarioLoginDTO();
         loginDTO.setCorreo("admin@huellitas.com");
         loginDTO.setPassword("12345");
 
-        when(usuarioServices.loginUsuario(anyString(), anyString())).thenReturn("Login exitoso");
+        com.marcandohuellitas.api.models.Usuario mockUser = new com.marcandohuellitas.api.models.Usuario();
+        mockUser.setCorreo("admin@huellitas.com");
+        mockUser.setNombre("Admin");
+        when(usuarioServices.loginUsuario(anyString(), anyString())).thenReturn(mockUser);
 
         // WHEN
         ResponseEntity<?> respuesta = usuarioController.loginUsuario(loginDTO);
 
         // THEN
         assertEquals(200, respuesta.getStatusCode().value());
-        assertEquals("Login exitoso", respuesta.getBody());
+        assertEquals(mockUser, respuesta.getBody());
     }
 
     @Test
@@ -51,7 +53,7 @@ public class UsuarioControllerTest {
         loginDTO.setCorreo("admin@huellitas.com");
         loginDTO.setPassword("malaPass");
 
-        when(usuarioServices.loginUsuario(anyString(), anyString())).thenReturn("Credenciales incorrectas. Intentos restantes: 4");
+        when(usuarioServices.loginUsuario(anyString(), anyString())).thenThrow(new RuntimeException("Credenciales incorrectas. Intentos restantes: 4"));
 
         // WHEN
         ResponseEntity<?> respuesta = usuarioController.loginUsuario(loginDTO);

@@ -35,6 +35,16 @@ public class ProductoController {
         return service.guardar(entidad);
     }
 
+    @PutMapping("/{id}") // PUT /api/productos/{id}
+    public ResponseEntity<Producto> actualizar(@PathVariable Long id, @RequestBody Producto entidad) {
+        return service.obtenerPorId(id)
+                .map(productoExistente -> {
+                    entidad.setId(id);
+                    return ResponseEntity.ok(service.guardar(entidad));
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @DeleteMapping("/{id}") // DELETE /api/productos/{id}
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         service.eliminar(id);

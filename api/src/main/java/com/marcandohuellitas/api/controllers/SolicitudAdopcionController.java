@@ -35,9 +35,20 @@ public class SolicitudAdopcionController {
         return service.guardar(entidad);
     }
 
+    @PutMapping("/{id}") // PUT /api/solicitudes_adopcion/{id}
+    public ResponseEntity<SolicitudAdopcion> actualizar(@PathVariable Long id, @RequestBody SolicitudAdopcion entidad) {
+        return service.obtenerPorId(id)
+                .map(existente -> {
+                    entidad.setId(id);
+                    return ResponseEntity.ok(service.guardar(entidad));
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @DeleteMapping("/{id}") // DELETE /api/solicitudes_adopcion/{id}
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         service.eliminar(id);
         return ResponseEntity.ok().build();
     }
 }
+

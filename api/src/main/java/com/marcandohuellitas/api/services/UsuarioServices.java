@@ -3,106 +3,183 @@ package com.marcandohuellitas.api.services;
 import com.marcandohuellitas.api.models.Usuario;
 import com.marcandohuellitas.api.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * Capa de Servicios de Usuarios.
- * Aquí es donde vive la "Lógica de Negocio". Los controladores no deben tomar decisiones importantes,
- * solo reciben peticiones y se las pasan a los servicios. Aquí es donde encriptamos contraseñas,
- * calculamos tiempos y nos defendemos de ataques.
+ * Aqui vive la logica de negocio. Los controladores no toman decisiones importantes,
+ * solo reciben peticiones y se las pasan a los servicios.
  */
 @Service
 public class UsuarioServices {
 
-    // Constantes para nuestra política de seguridad anti Fuerza Bruta
     private final int MAX_INTENTOS = 5;
     private final int MINUTOS_BLOQUEO = 15;
 
     @Autowired
-    private UsuarioRepository usuarioRepository; // Conexión a la Base de Datos
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
-    private PasswordEncoder passwordEncoder; // Herramienta de encriptación (BCrypt) que configuramos en SecurityConfig
+    private PasswordEncoder passwordEncoder;
 
-    /**
-     * Lógica para Registrar un nuevo usuario.
-     */
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Value("${spring.mail.username}")
+    private String correoRemitente;
+
+    // ==========================================
+    // REGISTRO
+    // ==========================================
+
     @Transactional
     public Usuario registrarUsuario(Usuario usuario) {
-        // 1. Verificar si el correo ya existe en la base de datos
         if (usuarioRepository.findByCorreo(usuario.getCorreo()).isPresent()) {
-            throw new RuntimeException("El correo ya está registrado");
+            throw new RuntimeException("El correo ya esta registrado");
         }
-        
-        // 2. Encriptar la contraseña ANTES de guardarla (Nunca guardar texto plano)
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
-        
-        // 3. Establecer valores por defecto de seguridad
         usuario.setRol(usuario.getRol() != null ? usuario.getRol() : "USUARIO");
         usuario.setIntentosFallidos(0);
-        
-        // 4. Guardar en la base de datos
         return usuarioRepository.save(usuario);
     }
 
-    /**
-     * Lógica para Iniciar Sesión (Login) y defender contra Fuerza Bruta.
-     */
+    // ==========================================
+    // LOGIN NORMAL (email + password)
+    // ==========================================
+
     @Transactional
-    public String loginUsuario(String correo, String password) {
-        // 1. Buscar al usuario por su correo
+    public Usuario loginUsuario(String correo, String password) {
         Optional<Usuario> userOpt = usuarioRepository.findByCorreo(correo);
-        
-        // Si no existe, no damos pistas de que el correo no existe por seguridad. Solo decimos "Credenciales incorrectas"
         if (userOpt.isEmpty()) {
-            return "Credenciales incorrectas";
+            throw new RuntimeException("Credenciales incorrectas");
         }
-        
+
         Usuario usuario = userOpt.get();
-        
-        // 2. Verificar si la cuenta está actualmente bloqueada (castigada)
+
         if (usuario.getBloqueadoHasta() != null && usuario.getBloqueadoHasta().isAfter(LocalDateTime.now())) {
-            return "Cuenta bloqueada temporalmente. Intente nuevamente más tarde.";
+            throw new RuntimeException("Cuenta bloqueada temporalmente. Intente nuevamente mas tarde.");
         }
-        
-        // Si estaba bloqueada pero ya pasó el tiempo de castigo (15 minutos), la desbloqueamos
+
         if (usuario.getBloqueadoHasta() != null && usuario.getBloqueadoHasta().isBefore(LocalDateTime.now())) {
             usuario.setBloqueadoHasta(null);
             usuario.setIntentosFallidos(0);
         }
-        
-        // 3. Verificar si la contraseña coincide usando el verificador de BCrypt
+
         if (passwordEncoder.matches(password, usuario.getPassword())) {
-            // ÉXITO: El usuario puso bien su contraseña. 
-            // Reseteamos sus intentos a 0 y actualizamos su última fecha de conexión.
             usuario.setIntentosFallidos(0);
             usuario.setBloqueadoHasta(null);
             usuario.setUltimoLogin(LocalDateTime.now());
-            usuarioRepository.save(usuario);
-            return "Login exitoso"; // Nota: Aquí más adelante devolveremos el Token JWT
+            return usuarioRepository.save(usuario);
         } else {
-            // FALLO: El usuario se equivocó de contraseña.
-            
-            // Contamos un intento fallido más
             int intentos = usuario.getIntentosFallidos() == null ? 0 : usuario.getIntentosFallidos();
             intentos++;
             usuario.setIntentosFallidos(intentos);
-            
-            // Si ya se equivocó 5 veces, lo bloqueamos y guardamos la fecha de desbloqueo
+
             if (intentos >= MAX_INTENTOS) {
                 usuario.setBloqueadoHasta(LocalDateTime.now().plusMinutes(MINUTOS_BLOQUEO));
                 usuarioRepository.save(usuario);
-                return "Cuenta bloqueada por demasiados intentos fallidos.";
+                throw new RuntimeException("Cuenta bloqueada por demasiados intentos fallidos.");
             }
-            
-            // Si aún le quedan intentos, solo guardamos el nuevo número de intentos y le advertimos
+
             usuarioRepository.save(usuario);
-            return "Credenciales incorrectas. Intentos restantes: " + (MAX_INTENTOS - intentos);
+            throw new RuntimeException("Credenciales incorrectas. Intentos restantes: " + (MAX_INTENTOS - intentos));
         }
+    }
+
+    // ==========================================
+    // LOGIN CON GOOGLE
+    // ==========================================
+
+    @Transactional
+    public Usuario loginConGoogle(String idTokenString) {
+        org.springframework.web.client.RestTemplate restTemplate = new org.springframework.web.client.RestTemplate();
+        String url = "https://oauth2.googleapis.com/tokeninfo?id_token=" + idTokenString;
+        try {
+            java.util.Map<String, Object> payload = restTemplate.getForObject(url, java.util.Map.class);
+            if (payload == null || !payload.containsKey("email")) {
+                throw new RuntimeException("Token de Google invalido");
+            }
+
+            String email = (String) payload.get("email");
+            String nombre = (String) payload.get("given_name");
+            String apellido = payload.containsKey("family_name") ? (String) payload.get("family_name") : " ";
+
+            String aud = (String) payload.get("aud");
+            if (!aud.equals("797768008218-iebmh990bsun874gjp4jakamjqmsh5hn.apps.googleusercontent.com")) {
+                throw new RuntimeException("Client ID de Google no coincide");
+            }
+
+            Optional<Usuario> userOpt = usuarioRepository.findByCorreo(email);
+            if (userOpt.isPresent()) {
+                return userOpt.get();
+            } else {
+                Usuario nuevoUsuario = new Usuario();
+                nuevoUsuario.setCorreo(email);
+                nuevoUsuario.setNombre(nombre != null ? nombre : "Usuario");
+                nuevoUsuario.setApellido(apellido);
+                nuevoUsuario.setPassword(passwordEncoder.encode(UUID.randomUUID().toString()));
+                nuevoUsuario.setRol("USUARIO");
+                nuevoUsuario.setIntentosFallidos(0);
+                return usuarioRepository.save(nuevoUsuario);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Error al verificar con Google: " + e.getMessage());
+        }
+    }
+
+    // ==========================================
+    // RECUPERACION DE CONTRASENA
+    // ==========================================
+
+    @Transactional
+    public void solicitarRecuperacion(String correo) {
+        Optional<Usuario> userOpt = usuarioRepository.findByCorreo(correo);
+        if (userOpt.isEmpty()) {
+            throw new RuntimeException("No existe ninguna cuenta con ese correo");
+        }
+
+        Usuario usuario = userOpt.get();
+        String token = UUID.randomUUID().toString();
+        usuario.setTokenRecuperacion(token);
+        usuarioRepository.save(usuario);
+
+        SimpleMailMessage mensaje = new SimpleMailMessage();
+        mensaje.setFrom(correoRemitente);
+        mensaje.setTo(correo);
+        mensaje.setSubject("Recuperacion de Contrasena - Marcando Huellitas");
+        mensaje.setText(
+            "Hola " + usuario.getNombre() + ",\n\n" +
+            "Recibimos una solicitud para restablecer tu contrasena.\n\n" +
+            "Tu codigo de recuperacion es:\n\n" +
+            "  " + token + "\n\n" +
+            "Copia y pega este codigo en la pagina de recuperacion.\n" +
+            "Si no solicitaste este cambio, ignora este correo.\n\n" +
+            "El equipo de Marcando Huellitas"
+        );
+        mailSender.send(mensaje);
+    }
+
+    @Transactional
+    public void resetPassword(String token, String nuevaPassword) {
+        Optional<Usuario> userOpt = usuarioRepository.findByTokenRecuperacion(token);
+        if (userOpt.isEmpty()) {
+            throw new RuntimeException("Token invalido o expirado");
+        }
+
+        Usuario usuario = userOpt.get();
+        usuario.setPassword(passwordEncoder.encode(nuevaPassword));
+        usuario.setTokenRecuperacion(null);
+        usuario.setIntentosFallidos(0);
+        usuario.setBloqueadoHasta(null);
+        usuarioRepository.save(usuario);
     }
 }

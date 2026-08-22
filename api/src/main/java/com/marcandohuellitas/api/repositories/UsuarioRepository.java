@@ -22,4 +22,10 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
      * Retorna un Optional<Usuario> para evitar el odiado error "NullPointerException" si no encuentra el correo.
      */
     Optional<Usuario> findByCorreo(String correo);
+
+    /**
+     * Busca un usuario por su token de recuperacion de contrasena.
+     * Usado en el proceso de reset de contrasena.
+     */
+    Optional<Usuario> findByTokenRecuperacion(String tokenRecuperacion);
 }

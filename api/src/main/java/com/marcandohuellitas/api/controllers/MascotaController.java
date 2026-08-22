@@ -32,7 +32,18 @@ public class MascotaController {
 
     @PostMapping // POST /api/mascotas
     public Mascota crear(@RequestBody Mascota entidad) {
+
         return service.guardar(entidad);
+    }
+
+    @PutMapping("/{id}") // PUT /api/mascotas/{id}
+    public ResponseEntity<Mascota> actualizar(@PathVariable Long id, @RequestBody Mascota entidad) {
+        return service.obtenerPorId(id)
+                .map(mascotaExistente -> {
+                    entidad.setId(id);
+                    return ResponseEntity.ok(service.guardar(entidad));
+                })
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}") // DELETE /api/mascotas/{id}
