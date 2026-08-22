@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Mascota.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/marcandohuellitas/api/controllers/MascotaControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/marcandohuellitas/api/services/MascotaServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/api.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/api.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/api.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/api.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/api/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/MascotaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/MascotaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/Mascotas.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/MascotaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/MascotaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/MascotaServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/MascotaService.java" afterDir="false" />
+    <list default="true" id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="Se añaden test de mascotas">
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/HistoriaExitoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/HistoriaExito.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/HistoriaExitoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/HistoriaExitoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/test/java/com/marcandohuellitas/api/services/HistoriaExitoServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,12 +25,26 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/api">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="api" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="api" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="api" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -61,12 +69,12 @@
     &quot;assignee&quot;: &quot;ericperucho12-netizen&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ericperucho12-netizen/Marcando-Huellitas-Backend.git&quot;,
-    &quot;accountId&quot;: &quot;3a5778d3-705a-495e-ab45-3bc320c97e51&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ericperucho12-netizen/Marcando-Huellitas-Backend.git",
+    "accountId": "b651d354-2dfb-46eb-9752-ffd41b41349c"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -78,11 +86,14 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build api.executor": "Run",
+    "Gradle.HistoriaExitoServiceTest.executor": "Run",
     "Gradle.MascotaControllerTest.executor": "Run",
     "Gradle.MascotaServiceTest.executor": "Run",
     "Gradle.UsuarioControllerTest.executor": "Run",
+    "Gradle.api [clean].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.ApiApplication.executor": "Run",
     "git-widget-placeholder": "Milett",
@@ -91,6 +102,35 @@
     "last_opened_file_path": "C:/Users/evely/OneDrive/Escritorio/COHORTE69/Marcando-Huellitas-Backend"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="api [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/api" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.api [clean]" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="" />
@@ -99,6 +139,27 @@
       <option name="presentableId" value="Default" />
       <updated>1787110443556</updated>
     </task>
+    <task id="LOCAL-00001" summary="Se añaden test de mascotas">
+      <option name="closed" value="true" />
+      <created>1787341797300</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1787341797300</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Se añaden test de mascotas">
+      <option name="closed" value="true" />
+      <created>1787341831641</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1787341831641</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Se añaden test de mascotas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se añaden test de mascotas" />
   </component>
 </project>
