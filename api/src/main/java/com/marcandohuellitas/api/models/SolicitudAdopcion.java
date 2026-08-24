@@ -34,6 +34,9 @@ public class SolicitudAdopcion {
 
     private String experiencia;
 
+    @Column(name = "fecha_cita")
+    private LocalDateTime fechaCita;
+
     private String estado;
 
     @Column(name = "creado_en", insertable = false, updatable = false)

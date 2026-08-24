@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/HistoriaExitoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/HistoriaExitoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/HistoriaExito.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/HistoriaExito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/HistoriaExitoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/HistoriaExitoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/HistoriaExitoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/HistoriaExitoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/SolicitudAdopcion.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/SolicitudAdopcion.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +21,6 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$/api">
-          <activation />
-        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -48,11 +43,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="developer" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -75,22 +65,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Build api.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MascotaControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.MascotaServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.UsuarioControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.api.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ApiApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;eric&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/EricPS/Desktop/MarcandoHuellitas_Backend&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build api.executor": "Run",
+    "Gradle.UsuarioControllerTest.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.ApiApplication.executor": "Run",
+    "git-widget-placeholder": "eric",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/EricPS/Desktop/MarcandoHuellitas_Backend"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
