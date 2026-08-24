@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface HistoriaExitoRepository extends JpaRepository<HistoriaExito, Long> {
+    java.util.List<HistoriaExito> findByEstado(String estado);
 }

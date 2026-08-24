@@ -21,12 +21,41 @@ public class HistoriaExitoService {
         return repository.findAll();
     }
 
+    public List<HistoriaExito> obtenerAprobados() {
+        return repository.findByEstado("APROBADO");
+    }
+
     public Optional<HistoriaExito> obtenerPorId(Long id) {
         return repository.findById(id);
     }
 
     public HistoriaExito guardar(HistoriaExito entidad) {
+        if (entidad.getEstado() == null || entidad.getEstado().isEmpty()) {
+            entidad.setEstado("PENDIENTE");
+        }
         return repository.save(entidad);
+    }
+    
+    public HistoriaExito editarHistoria(Long id, HistoriaExito datosNuevos) {
+        Optional<HistoriaExito> historiaOp = repository.findById(id);
+        if (historiaOp.isPresent()) {
+            HistoriaExito historia = historiaOp.get();
+            historia.setTitulo(datosNuevos.getTitulo());
+            historia.setHistoria(datosNuevos.getHistoria());
+            historia.setImagenUrl(datosNuevos.getImagenUrl());
+            return repository.save(historia);
+        }
+        return null;
+    }
+
+    public HistoriaExito actualizarEstado(Long id, String estado) {
+        Optional<HistoriaExito> historiaOp = repository.findById(id);
+        if (historiaOp.isPresent()) {
+            HistoriaExito historia = historiaOp.get();
+            historia.setEstado(estado.toUpperCase());
+            return repository.save(historia);
+        }
+        return null;
     }
 
     public void eliminar(Long id) {

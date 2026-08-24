@@ -38,5 +38,7 @@ public class HistoriaExito {
     @Column(name = "creado_en", insertable = false, updatable = false)
     private LocalDateTime creadoEn;
 
+    @Column(name = "estado")
+    private String estado = "PENDIENTE";
 }
 

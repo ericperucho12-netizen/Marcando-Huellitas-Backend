@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="" />
+    <list default="true" id="845809c1-4328-486c-a06c-f872a4a70d32" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/HistoriaExitoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/controllers/HistoriaExitoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/HistoriaExito.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/models/HistoriaExito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/HistoriaExitoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/repositories/HistoriaExitoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/HistoriaExitoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/marcandohuellitas/api/services/HistoriaExitoService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
