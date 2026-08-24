@@ -1,6 +1,9 @@
-﻿package com.marcandohuellitas.api.controllers;
+package com.marcandohuellitas.api.controllers;
 
+import com.marcandohuellitas.api.dto.AuthResponseDTO;
 import com.marcandohuellitas.api.dto.UsuarioLoginDTO;
+import com.marcandohuellitas.api.models.Usuario;
+import com.marcandohuellitas.api.security.JwtUtil;
 import com.marcandohuellitas.api.services.UsuarioServices;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,58 +11,60 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
-/**
- * Pruebas para el Controlador de Usuarios.
- * En lugar de levantar el servidor web, probamos la clase directamente con Mockito
- * para que sea 100% rápido y no dependa de otras librerías externas.
- */
 @ExtendWith(MockitoExtension.class)
 public class UsuarioControllerTest {
 
     @Mock
     private UsuarioServices usuarioServices;
 
+    @Mock
+    private JwtUtil jwtUtil;
+
     @InjectMocks
     private UsuarioController usuarioController;
 
     @Test
-    void login_DebeRetornar200_CuandoEsExitoso() {        // GIVEN
+    void login_DebeRetornar200_CuandoEsExitoso() {
         UsuarioLoginDTO loginDTO = new UsuarioLoginDTO();
         loginDTO.setCorreo("admin@huellitas.com");
         loginDTO.setPassword("12345");
 
-        com.marcandohuellitas.api.models.Usuario mockUser = new com.marcandohuellitas.api.models.Usuario();
+        Usuario mockUser = new Usuario();
         mockUser.setCorreo("admin@huellitas.com");
         mockUser.setNombre("Admin");
-        when(usuarioServices.loginUsuario(anyString(), anyString())).thenReturn(mockUser);
+        mockUser.setRol("ADMIN");
 
-        // WHEN
+        when(usuarioServices.loginUsuario(anyString(), anyString())).thenReturn(mockUser);
+        when(jwtUtil.generateToken(any(UserDetails.class))).thenReturn("mock.jwt.token");
+
         ResponseEntity<?> respuesta = usuarioController.loginUsuario(loginDTO);
 
-        // THEN
         assertEquals(200, respuesta.getStatusCode().value());
-        assertEquals(mockUser, respuesta.getBody());
+        AuthResponseDTO body = (AuthResponseDTO) respuesta.getBody();
+        assertNotNull(body);
+        assertEquals("mock.jwt.token", body.getToken());
+        assertEquals("Admin", body.getUsuario().getNombre());
     }
 
     @Test
-    void login_DebeRetornar401_CuandoFalla() {
-        // GIVEN
+    void login_DebeRetornarError_CuandoFalla() {
         UsuarioLoginDTO loginDTO = new UsuarioLoginDTO();
         loginDTO.setCorreo("admin@huellitas.com");
-        loginDTO.setPassword("malaPass");
+        loginDTO.setPassword("mala");
 
-        when(usuarioServices.loginUsuario(anyString(), anyString())).thenThrow(new RuntimeException("Credenciales incorrectas. Intentos restantes: 4"));
+        when(usuarioServices.loginUsuario(anyString(), anyString())).thenThrow(new RuntimeException("Credenciales incorrectas"));
 
-        // WHEN
         ResponseEntity<?> respuesta = usuarioController.loginUsuario(loginDTO);
 
-        // THEN
         assertEquals(401, respuesta.getStatusCode().value());
-        assertEquals("Credenciales incorrectas. Intentos restantes: 4", respuesta.getBody());
+        assertEquals("Credenciales incorrectas", respuesta.getBody());
     }
 }

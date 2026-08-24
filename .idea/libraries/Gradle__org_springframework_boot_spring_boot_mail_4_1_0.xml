@@ -5,6 +5,8 @@
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-mail/4.1.0/b8051f1cfbd57903eaa11612f6a1e51828e6fe8c/spring-boot-mail-4.1.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-mail/4.1.0/e2fd36cebacbb1d0c22eb4e5b6fb736112a68514/spring-boot-mail-4.1.0-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

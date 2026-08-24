@@ -1,17 +1,18 @@
 package com.marcandohuellitas.api.controllers;
 
+import com.marcandohuellitas.api.dto.AuthResponseDTO;
 import com.marcandohuellitas.api.dto.UsuarioLoginDTO;
 import com.marcandohuellitas.api.models.Usuario;
+import com.marcandohuellitas.api.security.JwtUtil;
 import com.marcandohuellitas.api.services.UsuarioServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import java.util.Collections;
 
-/**
- * Controlador REST de Usuarios.
- * Esta clase es la encargada de recibir las peticiones HTTP del Frontend.
- * No contiene logica pesada, solo actua como puente entre el Frontend y los Servicios.
- */
 @RestController
 @RequestMapping("/api/auth")
 public class UsuarioController {
@@ -19,10 +20,9 @@ public class UsuarioController {
     @Autowired
     private UsuarioServices usuarioServices;
 
-    /**
-     * Endpoint para Registrar un Usuario.
-     * URL: POST http://localhost:8080/api/auth/registro
-     */
+    @Autowired
+    private JwtUtil jwtUtil;
+
     @PostMapping("/registro")
     public ResponseEntity<?> registrarUsuario(@RequestBody Usuario usuario) {
         try {
@@ -33,15 +33,19 @@ public class UsuarioController {
         }
     }
 
-    /**
-     * Endpoint para Iniciar Sesion (email/password).
-     * URL: POST http://localhost:8080/api/auth/login
-     */
     @PostMapping("/login")
     public ResponseEntity<?> loginUsuario(@RequestBody UsuarioLoginDTO loginDTO) {
         try {
             Usuario usuario = usuarioServices.loginUsuario(loginDTO.getCorreo(), loginDTO.getPassword());
-            return ResponseEntity.ok(usuario);
+            
+            UserDetails userDetails = new User(
+                usuario.getCorreo(),
+                usuario.getPassword(),
+                Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + usuario.getRol()))
+            );
+            
+            String token = jwtUtil.generateToken(userDetails);
+            return ResponseEntity.ok(new AuthResponseDTO(token, usuario));
         } catch (RuntimeException e) {
             String errorMsg = e.getMessage();
             if (errorMsg.contains("bloqueada")) {
@@ -51,26 +55,25 @@ public class UsuarioController {
         }
     }
 
-    /**
-     * Endpoint para Iniciar Sesion con Google.
-     * URL: POST http://localhost:8080/api/auth/google
-     */
     @PostMapping("/google")
     public ResponseEntity<?> loginGoogle(@RequestBody java.util.Map<String, String> body) {
         try {
-            String token = body.get("token");
-            Usuario usuario = usuarioServices.loginConGoogle(token);
-            return ResponseEntity.ok(usuario);
+            String tokenGoogle = body.get("token");
+            Usuario usuario = usuarioServices.loginConGoogle(tokenGoogle);
+            
+            UserDetails userDetails = new User(
+                usuario.getCorreo(),
+                usuario.getPassword(),
+                Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + usuario.getRol()))
+            );
+            
+            String jwt = jwtUtil.generateToken(userDetails);
+            return ResponseEntity.ok(new AuthResponseDTO(jwt, usuario));
         } catch (RuntimeException e) {
             return ResponseEntity.status(401).body(e.getMessage());
         }
     }
 
-    /**
-     * Endpoint para solicitar recuperacion de contrasena.
-     * URL: POST http://localhost:8080/api/auth/recuperar
-     * Body: { "correo": "usuario@email.com" }
-     */
     @PostMapping("/recuperar")
     public ResponseEntity<?> solicitarRecuperacion(@RequestBody java.util.Map<String, String> body) {
         try {
@@ -84,11 +87,6 @@ public class UsuarioController {
         }
     }
 
-    /**
-     * Endpoint para restablecer la contrasena con el token recibido por correo.
-     * URL: POST http://localhost:8080/api/auth/reset-password
-     * Body: { "token": "uuid-token", "nuevaPassword": "NuevaPass123" }
-     */
     @PostMapping("/reset-password")
     public ResponseEntity<?> resetPassword(@RequestBody java.util.Map<String, String> body) {
         try {
