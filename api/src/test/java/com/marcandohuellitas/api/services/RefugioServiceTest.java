@@ -1,22 +1,23 @@
 package com.marcandohuellitas.api.services;
 
-
-import com.marcandohuellitas.api.models.Mascota;
 import com.marcandohuellitas.api.models.Refugio;
-import com.marcandohuellitas.api.repositories.MascotaRepository;
 import com.marcandohuellitas.api.repositories.RefugioRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.Optional;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
+/**
+ * Pruebas unitarias para RefugioService.
+ */
 @ExtendWith(MockitoExtension.class)
 public class RefugioServiceTest {
+
     @Mock
     private RefugioRepository repository;
 
