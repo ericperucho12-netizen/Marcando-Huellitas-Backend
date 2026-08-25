@@ -5,6 +5,7 @@ import com.marcandohuellitas.api.dto.UsuarioLoginDTO;
 import com.marcandohuellitas.api.models.Usuario;
 import com.marcandohuellitas.api.security.JwtUtil;
 import com.marcandohuellitas.api.services.UsuarioServices;
+import com.marcandohuellitas.api.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.User;
@@ -19,6 +20,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioServices usuarioServices;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -97,5 +101,23 @@ public class UsuarioController {
         } catch (RuntimeException e) {
             return ResponseEntity.status(400).body(e.getMessage());
         }
+    }
+
+    @PutMapping("/{id}")
+    @CrossOrigin(origins = "*")
+    public ResponseEntity<?> actualizarUsuario(@PathVariable Long id, @RequestBody Usuario datosNuevos) {
+        return usuarioRepository.findById(id).map(usuario -> {
+            if (datosNuevos.getNombre() != null) {
+                usuario.setNombre(datosNuevos.getNombre());
+            }
+            if (datosNuevos.getTelefono() != null) {
+                usuario.setTelefono(datosNuevos.getTelefono());
+            }
+            usuarioRepository.save(usuario);
+            
+            // Retornamos el usuario actualizado sin la contraseña por seguridad
+            usuario.setPassword(null);
+            return ResponseEntity.ok(usuario);
+        }).orElse(ResponseEntity.notFound().build());
     }
 }
