@@ -1,4 +1,4 @@
-﻿package com.marcandohuellitas.api.repositories;
+package com.marcandohuellitas.api.repositories;
 
 import com.marcandohuellitas.api.models.MensajeContacto;
 import org.springframework.data.jpa.repository.JpaRepository;

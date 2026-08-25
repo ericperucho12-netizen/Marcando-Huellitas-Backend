@@ -1,4 +1,4 @@
-﻿package com.marcandohuellitas.api.models;
+package com.marcandohuellitas.api.models;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
