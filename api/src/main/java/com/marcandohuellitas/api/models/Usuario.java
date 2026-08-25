@@ -39,6 +39,9 @@ public class Usuario {
     @Column(length = 50)
     private String rol = "USUARIO"; // Por defecto, todos nacen como usuario normal
 
+    @Column(length = 20)
+    private String telefono;
+
     // ==========================================
     // CAMPOS DE SEGURIDAD Y AUDITORÍA
     // ==========================================
