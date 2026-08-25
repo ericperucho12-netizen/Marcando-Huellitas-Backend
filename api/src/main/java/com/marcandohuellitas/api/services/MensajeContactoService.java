@@ -32,4 +32,8 @@ public class MensajeContactoService {
         }
         return null;
     }
+
+    public void eliminarMensaje(Long id) {
+        repository.deleteById(id);
+    }
 }

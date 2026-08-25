@@ -12,6 +12,7 @@ import java.util.List;
  * Recibe las peticiones HTTP del frontend.
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/pedidos")
 public class PedidoController {
 

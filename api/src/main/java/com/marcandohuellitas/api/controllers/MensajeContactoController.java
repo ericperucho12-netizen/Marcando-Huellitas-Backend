@@ -37,4 +37,10 @@ public class MensajeContactoController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarMensaje(@PathVariable Long id) {
+        service.eliminarMensaje(id);
+        return ResponseEntity.noContent().build();
+    }
 }
