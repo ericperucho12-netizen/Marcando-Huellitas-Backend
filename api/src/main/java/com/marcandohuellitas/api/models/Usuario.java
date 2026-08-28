@@ -42,6 +42,9 @@ public class Usuario {
     @Column(length = 20)
     private String telefono;
 
+    @Column(nullable = false)
+    private Boolean verificado = false;
+
     // ==========================================
     // CAMPOS DE SEGURIDAD Y AUDITORÍA
     // ==========================================

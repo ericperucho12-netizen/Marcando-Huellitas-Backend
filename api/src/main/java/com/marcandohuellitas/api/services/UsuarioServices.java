@@ -13,6 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
+import com.marcandohuellitas.api.models.VerificationToken;
+import com.marcandohuellitas.api.repositories.VerificationTokenRepository;
+import com.marcandohuellitas.api.services.EmailService;
 
 /**
  * Capa de Servicios de Usuarios.
@@ -34,6 +37,12 @@ public class UsuarioServices {
     @Autowired
     private JavaMailSender mailSender;
 
+    @Autowired
+    private VerificationTokenRepository verificationTokenRepo;
+
+    @Autowired
+    private EmailService emailService;
+
     @Value("${spring.mail.username}")
     private String correoRemitente;
 
@@ -49,7 +58,16 @@ public class UsuarioServices {
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         usuario.setRol(usuario.getRol() != null ? usuario.getRol() : "USUARIO");
         usuario.setIntentosFallidos(0);
-        return usuarioRepository.save(usuario);
+        usuario.setVerificado(false);
+        Usuario savedUser = usuarioRepository.save(usuario);
+        
+        String token = UUID.randomUUID().toString();
+        VerificationToken verificationToken = new VerificationToken(token, savedUser);
+        verificationTokenRepo.save(verificationToken);
+        
+        emailService.sendVerificationEmail(savedUser.getCorreo(), token);
+        
+        return savedUser;
     }
 
     // ==========================================
@@ -64,6 +82,10 @@ public class UsuarioServices {
         }
 
         Usuario usuario = userOpt.get();
+
+        if (!usuario.getVerificado()) {
+            throw new RuntimeException("Cuenta no verificada. Por favor revisa tu correo.");
+        }
 
         if (usuario.getBloqueadoHasta() != null && usuario.getBloqueadoHasta().isAfter(LocalDateTime.now())) {
             throw new RuntimeException("Cuenta bloqueada temporalmente. Intente nuevamente mas tarde.");
@@ -148,6 +170,10 @@ public class UsuarioServices {
         }
 
         Usuario usuario = userOpt.get();
+
+        if (!usuario.getVerificado()) {
+            throw new RuntimeException("Cuenta no verificada. Por favor revisa tu correo.");
+        }
         String token = UUID.randomUUID().toString();
         usuario.setTokenRecuperacion(token);
         usuarioRepository.save(usuario);
@@ -176,10 +202,28 @@ public class UsuarioServices {
         }
 
         Usuario usuario = userOpt.get();
+
+        if (!usuario.getVerificado()) {
+            throw new RuntimeException("Cuenta no verificada. Por favor revisa tu correo.");
+        }
         usuario.setPassword(passwordEncoder.encode(nuevaPassword));
         usuario.setTokenRecuperacion(null);
         usuario.setIntentosFallidos(0);
         usuario.setBloqueadoHasta(null);
         usuarioRepository.save(usuario);
+    }
+    @Transactional
+    public void verificarCuenta(String token) {
+        VerificationToken verificationToken = verificationTokenRepo.findByToken(token)
+            .orElseThrow(() -> new RuntimeException("Token invalido o expirado"));
+            
+        if (verificationToken.getFechaExpiracion().isBefore(LocalDateTime.now())) {
+            throw new RuntimeException("El token ha expirado");
+        }
+        
+        Usuario usuario = verificationToken.getUsuario();
+        usuario.setVerificado(true);
+        usuarioRepository.save(usuario);
+        verificationTokenRepo.delete(verificationToken);
     }
 }

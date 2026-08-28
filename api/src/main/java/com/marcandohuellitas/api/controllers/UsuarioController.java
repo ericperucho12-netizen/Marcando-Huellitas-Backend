@@ -18,6 +18,17 @@ import java.util.Collections;
 @RequestMapping("/api/auth")
 public class UsuarioController {
 
+    @GetMapping("/verify")
+    public ResponseEntity<?> verifyAccount(@RequestParam String token) {
+        try {
+            usuarioServices.verificarCuenta(token);
+            return ResponseEntity.ok("Cuenta verificada con exito. Ya puedes iniciar sesion.");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+
     @Autowired
     private UsuarioServices usuarioServices;
 
@@ -29,6 +40,7 @@ public class UsuarioController {
 
     @PostMapping("/registro")
     public ResponseEntity<?> registrarUsuario(@RequestBody Usuario usuario) {
+        usuario.setRol("USER");
         try {
             Usuario nuevoUsuario = usuarioServices.registrarUsuario(usuario);
             return ResponseEntity.ok(nuevoUsuario);
